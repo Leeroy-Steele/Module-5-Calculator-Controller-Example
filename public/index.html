@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <title>Calculator Example</title>
+</head>
+<body>
+    <div>Result
+        <span id="result"></span>
+    </div>
+</body>
+<script>
+
+    let num1=6;
+    let num2=4;
+
+    // using Query parameters
+
+    fetch(`/calculator/add?number1=${num1}&number2=${num2}`)
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerHTML = data.result;
+  
+    })
+
+    // using path parameters
+    // fetch(`/calculator/add/${num1}/${num2}`)
+    // .then(response => response.json())
+    // .then(data => {
+    //     document.getElementById("result").innerHTML = data.result;
+    //     console.log(data)
+    // })
+
+    // using body
+    // fetch(`/calculator/add`, {
+    //     method: 'POST',
+    //     headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({number1: 5, number2: 10})
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     document.getElementById("result").innerHTML = data.result;
+    //     console.log(data)
+    // })
+</script>
+</html>
