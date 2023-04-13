@@ -2,6 +2,15 @@ const express = require('express')
 const app = express()
 const port = 3000   // 1024 -> 65535 are good port numbers for dev  
 
+// swagger
+const swaggerUi = require('swagger-ui-express');
+swaggerDocument = require('./swagger.json');
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
+
 // require routes here
 const calculatorRoute = require('./routes/calculatorRoute')
 

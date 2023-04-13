@@ -1,18 +1,27 @@
-// page 41 - module 5
+// page 51 - 53 - module 5
+
+const Calculator = require('../libraries/calculator');
+
+let myCalc=new Calculator()
 
 const addNumbers = (req, res) => {
-
-    // grab values from front end query parameters
     let number1=parseInt(req.query.number1);
     let number2=parseInt(req.query.number2);
-    let sum=number1+number2
+    let sum = myCalc.add(number1,number2)
+    res.status(200)
+    res.json({result:sum})
+}
 
-    // respond (res) to client 
-    res.status(200) // 200 means ok
+const subtractNumbers = (req, res) => {
+    let number1=parseInt(req.query.number1);
+    let number2=parseInt(req.query.number2);
+    let sum = myCalc.subtract(number1,number2)
+    res.status(200)
     res.json({result:sum})
 }
 
 // export the function for the router to access
 module.exports = {
-    addNumbers
+    addNumbers,
+    subtractNumbers
 }
